@@ -1,8 +1,8 @@
-def ebob_hesapla(x, y):
+def gcd(x, y):
     if x % y == 0:
         return y
     else:
-        return ebob_hesapla(y, x%y)
+        return gcd(y, x%y)
 
 
 def reduce_copy(func, liste):
@@ -12,7 +12,6 @@ def reduce_copy(func, liste):
         result = func(result, liste[i])
 
     return result
-
 n = int(input("Count of numbers: "))
 
 numbers = []
@@ -20,5 +19,5 @@ for i in range(n):
     number = int(input(f"Enter {i+ 1} st number: "))
     numbers.append(number)
 
-result = reduce_copy(lambda x,y : (x*y) // ebob_hesapla(x,y), numbers)
+result = reduce_copy(lambda x,y : (x*y) // gcd(x,y), numbers)
 print("Least Common Mulitple:", result)
